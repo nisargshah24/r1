@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+<title>Intern Year · UCSF Internal Medicine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=Public+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F5F8F6; --card:#FFFFFF; --ink:#1C2A2E; --mut:#5C6D72; --line:#DCE5E1;
+  --uc:#2E4C8F; --sf:#0E7A68; --va:#A9761F; --clinic:#9C4A72; --nights:#473C7C;
+  --uc-t:#E7EDF9; --sf-t:#E2F2EE; --va-t:#F7EEDC; --clinic-t:#F6E7EF; --nights-t:#E9E6F5;
+  --vac:#E4A93C; --blank:#C9D3CF;
+  --card2:#FBFDFC; --hov:#F3F7F5; --hair:#EDF2EF; --hair2:#F2F6F4;
+  --ink2:#374A50; --ink3:#46585E; --mut2:#A9B6B3;
+  --offbg:#FCF6E8; --otherbg:#EFF3F1; --vaink:#7A5210;
+  --ucx:#2E4C8F; --sfx:#0E7A68; --clx:#9C4A72; --nix:#473C7C;
+  --shadow:0 1px 2px rgba(28,42,46,.05),0 4px 18px rgba(28,42,46,.06);
+  --disp:"Bricolage Grotesque",system-ui,sans-serif;
+  --body:"Inter","Public Sans",system-ui,-apple-system,sans-serif;
+  --mono:"Spline Sans Mono","SF Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#14191B; --card:#1B2225; --card2:#1F2729; --hov:#232C2F;
+  --ink:#E4EBE9; --ink2:#C2CECB; --ink3:#AFBDBA; --mut:#8FA1A5; --mut2:#6E8085;
+  --line:#2A3438; --hair:#232C2F; --hair2:#212A2D;
+  --uc:#4A6CC0; --sf:#12907B; --va:#B8842B; --clinic:#AD5580; --nights:#6E5EB8;
+  --uc-t:#1F2A45; --sf-t:#173430; --va-t:#3A2F18; --clinic-t:#3A2331; --nights-t:#2B2547;
+  --ucx:#8AA8F2; --sfx:#52C2A6; --clx:#D98FB4; --nix:#B49CF0; --vaink:#DBAD5C;
+  --vac:#C9993F; --blank:#3A4549; --offbg:#33301F; --otherbg:#242E31;
+  --shadow:0 1px 2px rgba(0,0,0,.45),0 8px 26px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  --paper:#14191B; --card:#1B2225; --card2:#1F2729; --hov:#232C2F;
+  --ink:#E4EBE9; --ink2:#C2CECB; --ink3:#AFBDBA; --mut:#8FA1A5; --mut2:#6E8085;
+  --line:#2A3438; --hair:#232C2F; --hair2:#212A2D;
+  --uc:#4A6CC0; --sf:#12907B; --va:#B8842B; --clinic:#AD5580; --nights:#6E5EB8;
+  --uc-t:#1F2A45; --sf-t:#173430; --va-t:#3A2F18; --clinic-t:#3A2331; --nights-t:#2B2547;
+  --ucx:#8AA8F2; --sfx:#52C2A6; --clx:#D98FB4; --nix:#B49CF0; --vaink:#DBAD5C;
+  --vac:#C9993F; --blank:#3A4549; --offbg:#33301F; --otherbg:#242E31;
+  --shadow:0 1px 2px rgba(0,0,0,.45),0 8px 26px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:68px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{color:var(--ink);font-family:var(--body);font-size:15.5px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;padding:0 20px 90px;
+  background:radial-gradient(1000px 420px at 12% -8%,color-mix(in srgb,var(--uc) 8%,transparent),transparent 65%),
+  radial-gradient(900px 420px at 88% -12%,color-mix(in srgb,var(--clinic) 7%,transparent),transparent 65%),var(--paper)}
+body::before{content:"";position:fixed;top:0;left:0;right:0;height:4px;z-index:90;
+  background:linear-gradient(90deg,var(--uc),var(--sf),var(--va),var(--clinic),var(--nights))}
+.wrap{max-width:1000px;margin:0 auto}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--uc);outline-offset:2px;border-radius:4px}
+
+/* ---------- header ---------- */
+.hdr{margin:22px 0 0;padding:38px 40px 30px;border-radius:22px;position:relative;overflow:hidden;border:1px solid var(--line);
+  background:radial-gradient(720px 300px at 12% -10%,color-mix(in srgb,var(--uc) 10%,transparent),transparent 60%),
+  radial-gradient(620px 280px at 88% -16%,color-mix(in srgb,var(--clinic) 8%,transparent),transparent 60%),
+  radial-gradient(700px 340px at 55% 118%,color-mix(in srgb,var(--sf) 7%,transparent),transparent 60%),
+  var(--card);box-shadow:var(--shadow)}
+@media (max-width:700px){.hdr{padding:26px 22px 22px;margin-top:14px}}
+.topnav{position:sticky;top:4px;z-index:80;display:flex;align-items:center;gap:20px;padding:10px 14px;margin:8px -14px 0;
+  background:color-mix(in srgb,var(--paper) 78%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid color-mix(in srgb,var(--line) 60%,transparent);border-radius:12px}
+.nbrand{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.topnav a{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-decoration:none;color:var(--mut);padding:4px 2px;border-bottom:2px solid transparent}
+.topnav a:hover{color:var(--ink);border-bottom-color:var(--vac)}
+.tbtn{margin-left:auto;width:32px;height:32px;background:var(--card);border:1px solid var(--line);border-radius:99px;cursor:pointer;
+  font-size:14px;color:var(--mut);line-height:1;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow)}
+.tbtn:hover{color:var(--ink)}
+@media (max-width:700px){.nbrand{display:none}}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+h1{font-family:var(--disp);font-weight:800;font-size:clamp(36px,6vw,62px);line-height:1.02;letter-spacing:-.015em;margin:10px 0 8px;color:var(--ink)}
+h1 .yr{color:var(--mut);font-weight:700}
+.srcline{color:var(--mut);font-size:13.5px;max-width:72ch}
+.srcline b{color:var(--ink)}
+.nowrow{display:grid;grid-template-columns:1.55fr 1fr;gap:10px;margin:26px 0 0}
+@media (max-width:700px){.nowrow{grid-template-columns:1fr}}
+.nowcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px 15px}
+.nlbl{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin-bottom:7px}
+.nowcard p{margin:0}
+.ndot{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:9px;vertical-align:1px;background:var(--blank)}
+.nowcard b{font-family:var(--disp);font-size:20px;font-weight:800;color:var(--ink);margin-right:10px}
+.nmeta{font-family:var(--mono);font-size:11.5px;color:var(--mut);white-space:nowrap}
+.nprog{height:5px;border-radius:99px;background:color-mix(in srgb,var(--ink) 11%,transparent);margin-top:12px;overflow:hidden}
+.nprog i{display:block;height:100%;border-radius:99px;width:0}
+
+/* key facts */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:10px;margin:14px 0 2px}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 15px;font-size:14px;box-shadow:var(--shadow)}
+.fact b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-bottom:5px;font-weight:600}
+.hdr .fact{background:var(--paper);box-shadow:none}
+
+/* ---------- timeline ---------- */
+.tl{margin:48px 0 6px}
+.tlh{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:6px}
+h2{font-family:var(--disp);font-weight:800;font-size:27px;letter-spacing:-.012em}
+.tlh h2,.blocks h2{font-size:31px}
+.tlh h2::before,.blocks h2::before,.cavs h2::before{display:block;font-family:var(--mono);font-size:11px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin-bottom:7px}
+.tlh h2::before{content:"01 · Timeline"}
+.blocks h2::before{content:"02 · Rotations"}
+.cavs h2::before{content:"03 · Fine print"}
+.tlh{align-items:flex-end}
+.youare{position:absolute;top:0;bottom:0;width:2px;background:var(--ink);z-index:6;box-shadow:0 0 0 1.5px var(--card)}
+.youare::after{content:"";position:absolute;top:0;left:50%;transform:translate(-50%,-1px);width:8px;height:8px;border-radius:99px;
+  background:var(--ink);box-shadow:0 0 0 2px var(--card)}
+.card.past{opacity:.62;filter:saturate(.72)}
+.card.past:hover{opacity:1;filter:none}
+.card.uc.now{box-shadow:var(--shadow),0 0 0 3px color-mix(in srgb,var(--uc) 42%,transparent)}
+.card.sf.now{box-shadow:var(--shadow),0 0 0 3px color-mix(in srgb,var(--sf) 42%,transparent)}
+.card.va.now{box-shadow:var(--shadow),0 0 0 3px color-mix(in srgb,var(--va) 42%,transparent)}
+.card.clinic.now{box-shadow:var(--shadow),0 0 0 3px color-mix(in srgb,var(--clinic) 42%,transparent)}
+.card.nights.now{box-shadow:var(--shadow),0 0 0 3px color-mix(in srgb,var(--nights) 42%,transparent)}
+.card.now .ct h3::after{content:"CURRENT";font-family:var(--mono);font-size:10px;letter-spacing:.1em;font-weight:600;
+  vertical-align:4px;margin-left:10px;padding:3px 9px;border-radius:99px;background:var(--sf-t);color:var(--sfx)}
+.index a.past{opacity:.55}
+.index a.now{background:var(--card);box-shadow:var(--shadow)}
+.index a.now .nm::after{content:" · now";color:var(--sfx);font-weight:700}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12.5px;color:var(--mut)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.dot{width:10px;height:10px;border-radius:3px;display:inline-block}
+.dot.uc{background:var(--uc)}.dot.sf{background:var(--sf)}.dot.va{background:var(--va)}
+.dot.clinic{background:var(--clinic)}.dot.nights{background:var(--nights)}
+.dot.vacd{background:repeating-linear-gradient(-45deg,var(--vac) 0 3px,#fff 3px 6px);border:1px solid var(--vac)}
+.tcap{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin:16px 0 6px}
+.strip{position:relative;display:flex;height:58px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--card);box-shadow:var(--shadow)}
+.seg{position:relative;display:flex;flex-direction:column;justify-content:center;padding:0 7px;color:#fff;text-decoration:none;
+  border-right:2px solid var(--paper);overflow:hidden;min-width:0;transition:filter .15s}
+.seg:last-of-type{border-right:0}
+.seg b{font-family:var(--mono);font-size:11px;opacity:.85;line-height:1.1}
+.seg span{font-family:var(--disp);font-weight:700;font-size:12.5px;white-space:nowrap;line-height:1.15}
+.seg:hover{filter:brightness(1.12)}
+.seg.uc{background:var(--uc)}.seg.sf{background:var(--sf)}.seg.va{background:var(--va)}
+.seg.clinic{background:var(--clinic)}.seg.nights{background:var(--nights)}
+.seg.blank{background:var(--blank);color:var(--mut)}
+.vac{position:absolute;top:0;bottom:0;pointer-events:none;
+  background:repeating-linear-gradient(-45deg,rgba(255,255,255,.85) 0 4px,rgba(228,169,60,.95) 4px 9px);
+  border-left:1px solid #fff;border-right:1px solid #fff}
+.ticks{position:relative;height:18px;margin-top:3px}
+.tick{position:absolute;transform:translateX(-1px);font-family:var(--mono);font-size:10.5px;color:var(--mut);
+  padding-left:5px;border-left:1px solid var(--line);line-height:18px}
+.thint{font-size:12.5px;color:var(--mut);margin-top:10px}
+
+/* ---------- index ---------- */
+.index{list-style:none;margin:30px 0 8px;display:grid;grid-template-columns:1fr 1fr;gap:4px 26px}
+.index a{display:grid;grid-template-columns:26px 12px 1fr auto auto;gap:8px;align-items:center;
+  text-decoration:none;padding:7px 8px;border-radius:8px;font-size:13.5px}
+.index a:hover{background:var(--card);box-shadow:var(--shadow)}
+.index .no{font-family:var(--mono);font-size:11.5px;color:var(--mut)}
+.index .nm{font-weight:600}
+.index .dt{font-family:var(--mono);font-size:12px;color:var(--mut);white-space:nowrap}
+.index .du{font-family:var(--mono);font-size:11px;color:var(--mut);white-space:nowrap;text-align:right;min-width:56px}
+@media (max-width:760px){.index{grid-template-columns:1fr}.index .du{display:none}}
+
+/* ---------- cards ---------- */
+.blocks h2{margin:60px 0 6px}
+.bsub{color:var(--mut);font-size:14px;margin-bottom:18px;max-width:78ch}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--line);
+  border-radius:16px;padding:22px 24px 20px;margin:0 0 22px;scroll-margin-top:64px;box-shadow:var(--shadow)}
+.card.uc{border-left-color:var(--uc)}.card.sf{border-left-color:var(--sf)}
+.card.va{border-left-color:var(--va)}.card.clinic{border-left-color:var(--clinic)}
+.card.nights{border-left-color:var(--nights)}
+.card header{display:grid;grid-template-columns:auto 1fr auto;gap:6px 16px;align-items:start}
+.cno{font-family:var(--mono);font-size:13px;font-weight:600;width:38px;height:38px;border-radius:11px;
+  display:flex;align-items:center;justify-content:center;background:var(--otherbg);color:var(--mut);margin-top:2px}
+.card.uc .cno{background:var(--uc-t);color:var(--ucx)}
+.card.sf .cno{background:var(--sf-t);color:var(--sfx)}
+.card.va .cno{background:var(--va-t);color:var(--vaink)}
+.card.clinic .cno{background:var(--clinic-t);color:var(--clx)}
+.card.nights .cno{background:var(--nights-t);color:var(--nix)}
+.ct h3{font-family:var(--disp);font-weight:800;font-size:23px;letter-spacing:-.01em;line-height:1.1}
+.sub{color:var(--mut);font-size:13px;margin-top:2px}
+.cd{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.dates{font-family:var(--mono);font-size:13.5px;font-weight:600;white-space:nowrap}
+.pill{font-family:var(--mono);font-size:11px;letter-spacing:.04em;padding:3px 9px;border-radius:99px;
+  border:1px solid var(--line);color:var(--mut);white-space:nowrap}
+.pill.site{color:#fff;border:0}
+.pill.site.uc{background:var(--uc)}.pill.site.sf{background:var(--sf)}.pill.site.va{background:var(--va)}
+.pill.site.clinic{background:var(--clinic)}.pill.site.nights{background:var(--nights)}
+.vacpill{background:repeating-linear-gradient(-45deg,var(--card) 0 4px,var(--offbg) 4px 8px);border-color:var(--vac);color:var(--vaink);font-weight:600}
+@media (max-width:700px){
+  .card header{grid-template-columns:auto 1fr}
+  .cd{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:flex-start}
+}
+.note{margin:12px 0 2px;font-size:14px;color:var(--ink2);background:var(--paper);border-radius:9px;padding:9px 12px}
+
+/* roster */
+.roster{margin-top:14px;display:grid;gap:13px}
+.rg h4{font-family:var(--mono);font-weight:600;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--mut);margin-bottom:7px}
+.rg h4 span{opacity:.75;letter-spacing:.06em;text-transform:none;font-weight:400;margin-left:6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:baseline;gap:7px;background:var(--paper);border:1px solid var(--line);
+  border-radius:8px;padding:4px 10px;font-size:13px;font-weight:500;line-height:1.35}
+.chip em{font-style:normal;font-family:var(--mono);font-size:10.5px;color:var(--mut)}
+.rg.pre .chip{background:var(--card);border-style:dashed;color:var(--mut)}
+.empty{font-size:13px;color:var(--mut)}
+
+/* special panels */
+.panel{margin:14px 0 4px;border:1px solid var(--line);border-radius:11px;padding:13px 15px;background:var(--card2)}
+.ptitle{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--mut);margin-bottom:9px}
+.hand{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:5px 0;font-size:13.5px}
+.hand+.hand{border-top:1px dashed var(--line)}
+.who{font-weight:600;background:var(--paper);border:1px solid var(--line);border-radius:7px;padding:2px 9px}
+.who.out{color:var(--mut);border-style:dashed;background:var(--card)}
+.who.you{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.arr{color:var(--mut);font-size:15px}
+.role{color:var(--mut);font-size:12.5px}
+.seats{border-collapse:collapse;width:100%;max-width:560px;font-size:13.5px}
+.seats th{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--mut);
+  text-align:left;font-weight:600;padding:4px 14px 6px 0;border-bottom:1px solid var(--line)}
+.seats td{padding:6px 14px 6px 0;border-bottom:1px solid var(--line)}
+.seats td:first-child{font-family:var(--mono);font-size:12px;color:var(--mut)}
+.seats tr.me td{font-weight:700;background:var(--sf-t)}
+.pnote{margin-top:10px;font-size:12.5px;color:var(--mut);max-width:78ch}
+.slotline{display:flex;flex-wrap:wrap;gap:6px;align-items:stretch}
+.slot{display:flex;flex-direction:column;gap:1px;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:13px;font-weight:600}
+.slot em{font-style:normal;font-family:var(--mono);font-size:10.5px;font-weight:400;color:var(--mut)}
+.slot.me{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.slot.me em{color:#C7D2D6}
+.slot.gap{border-style:dashed;background:var(--card);color:var(--mut);font-weight:400}
+
+/* rotation guide dropdown */
+details.guide{margin:14px 0 4px;border:1px solid var(--line);border-radius:11px;background:var(--card2);overflow:hidden}
+details.guide summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:9px;
+  padding:11px 15px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--mut);user-select:none}
+details.guide summary::-webkit-details-marker{display:none}
+details.guide summary:hover{background:var(--hov)}
+details.guide summary .chev{display:inline-block;transition:transform .15s;font-size:12px;line-height:1}
+details.guide[open] summary .chev{transform:rotate(90deg)}
+details.guide summary .gsrc{margin-left:auto;font-weight:400;letter-spacing:.04em;text-transform:none;opacity:.75}
+.gbody{padding:2px 16px 14px;border-top:1px dashed var(--line)}
+.gbody h5{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--mut);margin:14px 0 5px}
+.gbody p,.gbody li{font-size:14px;color:var(--ink2);line-height:1.55}
+.gbody p{margin:0 0 4px}
+.gbody ul{margin:0 0 2px 17px;padding:0}
+.gbody li{margin-bottom:4px}
+.gbody b,.gbody strong{color:var(--ink)}
+.gbody .mono{font-family:var(--mono);font-size:12.5px}
+
+/* live schedule */
+details.live{margin:22px 0 0;border:1px solid var(--line);border-radius:16px;background:var(--card);overflow:hidden;box-shadow:var(--shadow)}
+details.live summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:14px 18px;user-select:none}
+details.live summary::-webkit-details-marker{display:none}
+details.live summary:hover{background:var(--card2)}
+details.live summary .chev{display:inline-block;transition:transform .15s;color:var(--mut)}
+details.live[open] summary .chev{transform:rotate(90deg)}
+details.live summary .lt{font-family:var(--disp);font-weight:800;font-size:17px;letter-spacing:-.01em}
+details.live summary .lsrc{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--mut);text-align:right}
+details.live summary .lsrc a{color:var(--ucx);text-decoration:none;border-bottom:1px dotted var(--ucx)}
+details.live summary .lsrc a:hover{border-bottom-style:solid}
+#lvupd.stale{color:#A9761F;font-weight:600}
+.lvwrap{border-top:1px solid var(--line);max-height:520px;overflow:auto}
+.lvgrid{min-width:680px}
+.lvhead{display:grid;grid-template-columns:repeat(7,1fr);position:sticky;top:0;background:var(--card);border-bottom:1px solid var(--line);z-index:2}
+.lvhead span{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--mut);padding:9px 10px 7px}
+.lvweek{display:grid;grid-template-columns:repeat(7,1fr);grid-template-rows:auto auto 1fr;border-bottom:1px solid var(--hair);padding-bottom:12px}
+.lvweek:last-child{border-bottom:0}
+.lvdn{grid-row:1;font-family:var(--mono);font-size:11px;color:var(--mut);padding:9px 10px 6px;white-space:nowrap;overflow:hidden}
+.lvdn+.lvdn,.lvtasks+.lvtasks{border-left:1px solid var(--hair2)}
+.lvdn.c-wkend{color:var(--mut2)}
+.lvdn .tdy{background:var(--ink);color:var(--paper);border-radius:99px;padding:2px 8px;font-weight:600}
+.lvbar{grid-row:2;margin:0 6px 0 4px;border-radius:5px;font-family:var(--disp);font-weight:700;font-size:12.5px;padding:3px 10px 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-left:3px solid transparent}
+.lvbar.uc{background:var(--uc-t);color:var(--ucx);border-left-color:var(--uc)}
+.lvbar.sf{background:var(--sf-t);color:var(--sfx);border-left-color:var(--sf)}
+.lvbar.va{background:var(--va-t);color:var(--vaink);border-left-color:var(--va)}
+.lvbar.clinic{background:var(--clinic-t);color:var(--clx);border-left-color:var(--clinic)}
+.lvbar.nights{background:var(--nights-t);color:var(--nix);border-left-color:var(--nights)}
+.lvbar.other{background:var(--otherbg);color:var(--ink);border-left-color:var(--blank)}
+.lvbar.off{background:var(--offbg);color:var(--vaink);border-left-color:var(--vac)}
+.lvtasks{grid-row:3;padding:6px 10px 0;display:flex;flex-direction:column;gap:4px;min-height:12px}
+.lvtask{font-size:12px;color:var(--ink3);line-height:1.4;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lvtask em{font-style:normal;font-family:var(--mono);font-size:10.5px;color:var(--mut);margin-right:5px}
+.lvtask.offd{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;color:var(--mut2)}
+.lvmsg{padding:16px 18px;font-size:14px;color:var(--mut)}
+
+/* caveats */
+.cavs{margin-top:56px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 26px;box-shadow:var(--shadow)}
+.cavs h2{font-size:19px}
+.cavs ul{margin:10px 0 0 18px;color:var(--ink2);font-size:14px;max-width:82ch}
+.cavs li{margin-bottom:8px}
+.foot{margin-top:34px;font-family:var(--mono);font-size:11px;color:var(--mut)}
+
+@media print{
+  body{padding:0;background:#fff;font-size:12px}
+  .seg,.pill.site,.vac,.dot,.slot.me,.who.you,.seats tr.me td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .card,.panel{break-inside:avoid;box-shadow:none}
+  .thint{display:none}
+}
+
+[hidden]{display:none!important}
+/* ---------- setup panel ---------- */
+.setup{margin:26px 0 0;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 26px;box-shadow:var(--shadow)}
+.setup h2{font-size:22px;margin-bottom:4px}
+.ssub{color:var(--mut);font-size:14px;margin-bottom:16px}
+.scols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:760px){.scols{grid-template-columns:1fr}}
+.scol{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.scol h3{font-family:var(--disp);font-size:16.5px;font-weight:800;margin-bottom:10px;display:flex;align-items:center;gap:9px}
+.stag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:99px;background:var(--sf-t);color:var(--sfx)}
+.stag.alt{background:var(--uc-t);color:var(--ucx)}
+.scol ol{margin:0 0 10px 18px;font-size:14px;color:var(--ink2)}
+.scol ol li{margin-bottom:6px}
+.scol p{font-size:14px;color:var(--ink2);margin:0 0 10px}
+.shint{font-size:12.5px;color:var(--mut)}
+.shint a{color:var(--ucx)}
+.mono{font-family:var(--mono);font-size:12.5px}
+.drop{display:flex;align-items:center;justify-content:center;min-height:64px;margin:6px 0 10px;border:2px dashed var(--line);
+  border-radius:10px;color:var(--mut);font-size:13.5px;cursor:pointer;text-align:center;padding:10px}
+.drop:hover,.drop.over{border-color:var(--uc);color:var(--ink);background:var(--hov)}
+/* ---------- roster caveat ---------- */
+.rcav{font-size:11.5px;color:var(--mut2);font-family:var(--mono);margin-top:2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="topnav">
+  <span class="nbrand" id="nbrand">Intern Year</span>
+  <a href="#live">Live</a>
+  <a href="#tl">Year</a>
+  <a href="#blocks">Blocks</a>
+  <button id="thm" class="tbtn" aria-label="Toggle dark mode" title="Toggle dark mode">☾</button>
+</nav>
+
+<header class="hdr">
+  <p class="eyebrow" id="eyebrow">UCSF Internal Medicine · Intern year</p>
+  <h1 id="heroName">Your intern year <span class="yr" id="heroYr"></span></h1>
+  <p class="srcline" id="srcline">Loading your schedule…</p>
+
+<div class="nowrow" id="nowrow" hidden>
+  <div class="nowcard"><span class="nlbl">Now</span><p><i class="ndot" id="nowDot"></i><b id="nowTitle"></b><span class="nmeta" id="nowMeta"></span></p><div class="nprog"><i id="nowBar"></i></div></div>
+  <div class="nowcard"><span class="nlbl">Up next</span><p><i class="ndot" id="nextDot"></i><b id="nextTitle"></b><span class="nmeta" id="nextMeta"></span></p></div>
+</div>
+
+  <div class="facts" id="facts" hidden></div>
+</header>
+
+<section class="setup" id="setup" hidden>
+  <h2>Set up your schedule</h2>
+  <p class="ssub">This page renders <b>your</b> live QGenda schedule. Two ways to get it in:</p>
+  <div class="scols">
+    <div class="scol">
+      <h3><span class="stag">Recommended</span>Live sync via GitHub</h3>
+      <ol>
+        <li>In QGenda, copy your personal <b>calendar-sync (iCal) link</b>.</li>
+        <li>On GitHub, use this repo as a <b>template</b> (or fork it).</li>
+        <li>Add the link as an Actions secret named <span class="mono">QGENDA_ICS_URL</span>.</li>
+        <li>Run the <b>Sync QGenda feed</b> workflow once, then enable GitHub Pages.</li>
+      </ol>
+      <p class="shint">Full walkthrough in the <a id="readmeLink" href="#" target="_blank" rel="noopener">README</a>. Your iCal link (which contains a private key) stays in the secret — it is never published.</p>
+    </div>
+    <div class="scol">
+      <h3><span class="stag alt">Instant</span>Import a .ics file</h3>
+      <p>Export/download your QGenda calendar as an <span class="mono">.ics</span> file and drop it here. It stays in <b>this browser only</b> (localStorage) — nothing is uploaded.</p>
+      <label class="drop" id="drop">Drop .ics here or click to choose<input type="file" id="icsFile" accept=".ics,text/calendar" hidden></label>
+      <p class="shint">Imports are a snapshot — they don't update when QGenda changes. <a href="?demo" id="demoLink">Or preview with demo data ↗</a></p>
+    </div>
+  </div>
+</section>
+
+<details class="live" id="live" hidden>
+  <summary><span class="chev">▸</span><span class="lt">Live schedule</span><span class="lsrc"><span id="lvsrc">from QGenda</span> · <span id="lvupd">—</span><span id="lvsyncwrap"> · <a id="lvsync" href="#" target="_blank" rel="noopener">sync now ↗</a></span></span></summary>
+  <div class="lvwrap" id="lvwrap"><p class="lvmsg">Loading…</p></div>
+</details>
+
+<section class="tl" id="tl" aria-label="Year timeline" hidden>
+  <div class="tlh"><h2>The year at a glance</h2><div class="legend">
+    <span><i class="dot uc"></i>UC / Parnassus</span><span><i class="dot sf"></i>ZSFG</span><span><i class="dot va"></i>VA</span><span><i class="dot clinic"></i>Clinic</span><span><i class="dot nights"></i>Nights</span><span><i class="dot vacd"></i>Vacation</span>
+  </div></div>
+  <div id="tlbody"></div>
+  <p class="thint">Widths are to scale. Tap any block to jump to its detail card.</p>
+</section>
+
+<ol class="index" id="index" hidden></ol>
+
+<section class="blocks" id="blocks" hidden>
+  <h2>Block by block</h2>
+  <p class="bsub">Each card shows a condensed rotation guide plus the interns and residents scheduled on the same rotation code around your dates. A small date range on a name means partial overlap — residents flip on an offset cycle, so some overlap only a few days at the edges.</p>
+  <div id="cards"></div>
+</section>
+
+<section class="cavs" id="cavs" hidden>
+  <h2>Fine print</h2>
+  <ul>
+    <li><b>Your schedule is live;</b> everyone else's isn't. Your blocks, dates and the day-level grid come straight from your QGenda feed. The <em>"on with you / on before you"</em> rosters come from a <b>static, program-wide QGenda export printed 7/8/2026</b> — swaps and reassignments made after that date won't show here.</li>
+    <li>Rosters match on the exact rotation code. Night coverage usually runs under separate codes (e.g. "SFW Night Intern", "SF ICU Night"), so night-float trainees aren't included in ward-block rosters, and vice versa.</li>
+    <li>The <b>Rotation guide</b> dropdowns condense the site "Ultimate Guides" (Parnassus 6/2026, SFGH, VA) and Max's block notes — they describe last year's structures, so times, caps and rooms may shift. Door codes, shared logins and personal cell numbers were deliberately left off this public page (they're in the source guides on Box).</li>
+    <li>If this page is public (GitHub Pages), your day-level schedule is public too. Your QGenda iCal URL itself stays in a repo secret and is never exposed.</li>
+    <li id="cavImport" hidden>You're viewing a manually imported .ics snapshot — it won't refresh on its own. Re-import to update, or set up live sync. <a href="#" id="clearImport">Clear imported data</a>.</li>
+  </ul>
+  <p class="foot" id="foot"></p>
+</section>
+
+</div>
+
+<script>
+(function(){
+  'use strict';
+  /* ---------- theme ---------- */
+  var tb=document.getElementById('thm');
+  function effTheme(){var t=document.documentElement.getAttribute('data-theme');
+    return t||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}
+  function tIcon(){tb.textContent=effTheme()==='dark'?'☀':'☾';}
+  tb.addEventListener('click',function(){var n=effTheme()==='dark'?'light':'dark';
+    document.documentElement.setAttribute('data-theme',n);localStorage.setItem('theme',n);tIcon();});
+  tIcon();
+
+  /* ---------- helpers ---------- */
+  var MOSF=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var MOS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+  function iso(dt){return dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0')+'-'+String(dt.getDate()).padStart(2,'0');}
+  function D(isoStr){return new Date(isoStr+'T12:00');}
+  function shift(dt,n){var x=new Date(dt);x.setDate(x.getDate()+n);return x;}
+  function dayDiff(a,b){return Math.round((b-a)/864e5);}
+  function fmtMD(dt){return MOS[dt.getMonth()]+' '+dt.getDate();}
+  function fmtMDs(isoStr){var d=D(isoStr);return (d.getMonth()+1)+'/'+d.getDate();}
+  function fmtRange(s,e){
+    var sy=s.getFullYear(),ey=e.getFullYear();
+    if(sy!==ey)return fmtMD(s)+', '+sy+' – '+fmtMD(e)+', '+ey;
+    if(s.getMonth()===e.getMonth())return fmtMD(s)+' – '+e.getDate()+', '+ey;
+    return fmtMD(s)+' – '+fmtMD(e)+', '+ey;
+  }
+  function durLabel(days){return days%7===0?(days/7)+' weeks':days+' days';}
+  function siteOf(t){
+    var u=String(t).toUpperCase();
+    if(/VACATION|^OFF\b|^VAC\b/.test(u))return'off';
+    if(/^FLEX NIGHT|NIGHT FLOAT|^SWING/.test(u))return'nights';
+    if(/^CLINIC|Z1600|Z1545|Z1701|IHD/.test(u))return'clinic';
+    if(/^SF|ZSFG/.test(u))return'sf';
+    if(/^VA/.test(u))return'va';
+    if(/^UC/.test(u))return'uc';
+    return'';
+  }
+  var SC={uc:'--uc',sf:'--sf',va:'--va',clinic:'--clinic',nights:'--nights',off:'--vac'};
+  function dotc(t){return 'var('+(SC[siteOf(t)]||'--blank')+')';}
+  function fmtT(hm){var h=+hm.slice(0,2),m=hm.slice(3),ap=h<12?'a':'p';h=h%12||12;
+    return h+(m!=='00'?':'+m:'')+ap;}
+  function getJSON(url){return fetch(url).then(function(r){if(!r.ok)throw new Error(url+' '+r.status);return r.json();});}
+
+  /* ---------- ICS import (client-side, stays in localStorage) ---------- */
+  function parseICS(raw){
+    var lines=[],curl='';
+    raw.split(/\r?\n/).forEach(function(ln){
+      if(ln[0]===' '||ln[0]==='\t'){curl+=ln.slice(1);}else{if(curl)lines.push(curl);curl=ln;}
+    });
+    if(curl)lines.push(curl);
+    function pdt(prop){
+      var i=prop.indexOf(':'),name=prop.slice(0,i),val=prop.slice(i+1);
+      if(name.indexOf('VALUE=DATE')>-1)return[val.slice(0,4)+'-'+val.slice(4,6)+'-'+val.slice(6,8),null];
+      var m=val.match(/^(\d{8})T(\d{4})(\d{2})?(Z?)/);if(!m)return[null,null];
+      if(m[4]==='Z'){
+        var dt=new Date(Date.UTC(+m[1].slice(0,4),+m[1].slice(4,6)-1,+m[1].slice(6,8),+m[2].slice(0,2),+m[2].slice(2,4)));
+        return[iso(dt),String(dt.getHours()).padStart(2,'0')+':'+String(dt.getMinutes()).padStart(2,'0')];
+      }
+      return[m[1].slice(0,4)+'-'+m[1].slice(4,6)+'-'+m[1].slice(6,8),m[2].slice(0,2)+':'+m[2].slice(2,4)];
+    }
+    var evs=[],ev=null,suf={},best=null;
+    lines.forEach(function(ln){
+      if(ln==='BEGIN:VEVENT'){ev={};return;}
+      if(ln==='END:VEVENT'){if(ev&&ev.d&&ev.t)evs.push(ev);ev=null;return;}
+      if(!ev)return;
+      if(ln.lastIndexOf('DTSTART',0)===0){var r=pdt(ln);ev.d=r[0];if(r[1])ev.s=r[1];}
+      else if(ln.lastIndexOf('DTEND',0)===0&&ln.split(':',1)[0].indexOf('VALUE=DATE')<0){var r2=pdt(ln);if(r2[1])ev.e=r2[1];}
+      else if(ln.lastIndexOf('SUMMARY',0)===0){
+        var t=ln.slice(ln.indexOf(':')+1).replace(/\\,/g,',').replace(/\\;/g,';').replace(/\\\\/g,'\\');
+        var sm=t.match(/\s*\[([^\]\[]+)\]\s*$/);
+        if(sm){var k=sm[1].trim();suf[k]=(suf[k]||0)+1;t=t.slice(0,sm.index);}
+        t=t.trim();
+        if(t.lastIndexOf('[R] ',0)===0){ev.r=1;t=t.slice(4);}
+        ev.t=t;
+      }
+    });
+    evs.sort(function(a,b){return a.d<b.d?-1:a.d>b.d?1:(b.r||0)-(a.r||0);});
+    Object.keys(suf).forEach(function(k){if(best===null||suf[k]>suf[best])best=k;});
+    return{events:evs,who:best||undefined};
+  }
+  window.__parseICS=parseICS; // dev/test hook
+  var drop=document.getElementById('drop'),fileIn=document.getElementById('icsFile');
+  if(drop){
+    drop.addEventListener('click',function(){fileIn.click();});
+    drop.addEventListener('dragover',function(e){e.preventDefault();drop.classList.add('over');});
+    drop.addEventListener('dragleave',function(){drop.classList.remove('over');});
+    drop.addEventListener('drop',function(e){e.preventDefault();drop.classList.remove('over');
+      if(e.dataTransfer.files[0])readICS(e.dataTransfer.files[0]);});
+    fileIn.addEventListener('change',function(){if(fileIn.files[0])readICS(fileIn.files[0]);});
+  }
+  function readICS(f){
+    var rd=new FileReader();
+    rd.onload=function(){
+      try{
+        var data=parseICS(rd.result);
+        if(!data.events.length)throw new Error('no events');
+        localStorage.setItem('importedSchedule',JSON.stringify(data));
+        localStorage.setItem('importedAt',new Date().toISOString());
+        location.href=location.pathname;   // reload without ?demo
+      }catch(err){alert('Could not parse that .ics file ('+err.message+').');}
+    };
+    rd.readAsText(f);
+  }
+
+  /* ---------- load everything ---------- */
+  var CFG={},GUIDES={codes:{},sites:{}},COR=null,SCHED=null,SRC=null;
+  var wantDemo=/[?&]demo/.test(location.search);
+  Promise.allSettled([
+    getJSON('config.json'),
+    getJSON('data/rotation-guides.json'),
+    getJSON('data/coresidents.json'),
+    wantDemo?Promise.reject('skip'):getJSON('schedule-live.json?t='+Date.now())
+  ]).then(function(res){
+    if(res[0].status==='fulfilled')CFG=res[0].value||{};
+    if(res[1].status==='fulfilled')GUIDES=res[1].value;
+    if(res[2].status==='fulfilled')COR=res[2].value;
+    if(res[3].status==='fulfilled'&&res[3].value&&res[3].value.events&&res[3].value.events.length){
+      SCHED=res[3].value;SRC='live';return render();
+    }
+    var imp=localStorage.getItem('importedSchedule');
+    if(!wantDemo&&imp){
+      try{SCHED=JSON.parse(imp);SRC='import';return render();}catch(_){}
+    }
+    if(wantDemo){
+      return getJSON('data/sample-schedule.json').then(function(j){SCHED=j;SRC='demo';SCHED.who=SCHED.who||'Weiss, M';render();});
+    }
+    render(); // setup mode
+  }).catch(function(err){
+    document.getElementById('srcline').textContent='Something went wrong loading data: '+err.message;
+  });
+
+  /* ---------- who am I ---------- */
+  function myKeys(){
+    var ks=[];
+    function add(last,fi){if(last)ks.push(norm(last)+'|'+norm(fi).slice(0,1));}
+    var q=CFG.qgendaName||(SCHED&&SCHED.who)||'';
+    if(q.indexOf(',')>-1){var p=q.split(',');add(p[0],p[1]||'');}
+    var n=CFG.name||'';
+    if(n){var w=n.trim().split(/\s+/);if(w.length>1)add(w[w.length-1],w[0]);}
+    return ks;
+  }
+  function norm(s){return String(s).toLowerCase().replace(/[^a-z]/g,'');}
+  function provKeys(p){
+    var ks=[];
+    if(p.n&&p.n.indexOf(',')>-1){var a=p.n.split(',');ks.push(norm(a[0])+'|'+norm(a[1]).slice(0,1));}
+    var w=(p.d||'').trim().split(/\s+/);
+    if(w.length>1)ks.push(norm(w[w.length-1])+'|'+norm(w[0]).slice(0,1));
+    return ks;
+  }
+  function shortName(p){
+    if(p.n&&p.n.indexOf(',')>-1){var a=p.n.split(',');return a[0].trim()+', '+a[1].trim().slice(0,1);}
+    var w=(p.d||'').trim().split(/\s+/);
+    if(w.length>1)return w[w.length-1]+', '+w[0].slice(0,1);
+    return p.d||p.n;
+  }
+
+  /* ---------- guide resolution ---------- */
+  function findGuide(code){
+    var g=GUIDES.codes||{};
+    if(g[code]&&g[code].html)return g[code];
+    var isNight=/night|swing/i.test(code);
+    var cands=[code.replace(/\s*\+J$/,'')];
+    var wsplit=code.split(' ');
+    for(var i=wsplit.length-1;i>=1;i--)cands.push(wsplit.slice(0,i).join(' '));
+    for(var j=0;j<cands.length;j++){
+      var c=cands[j];
+      if(g[c]&&g[c].html&&(/night|swing/i.test(c)===isNight||j===0))return g[c];
+    }
+    return null;
+  }
+  function siteBasics(code){
+    var st=siteOf(code),m={uc:'Parnassus',sf:'ZSFG',va:'VA'};
+    if(code.lastIndexOf('ClinicVA',0)===0)st='va';
+    var key=m[st];
+    return key&&GUIDES.sites&&GUIDES.sites[key]?{key:key,html:GUIDES.sites[key]}:null;
+  }
+
+  /* ---------- main render ---------- */
+  function displayFromWho(){
+    var w=(SCHED&&SCHED.who)||'';
+    if(!w)return'';
+    if(COR&&w.indexOf(',')>-1){
+      var p2=w.split(','),key=norm(p2[0])+'|'+norm(p2[1]||'').slice(0,1);
+      var hit=(COR.providers||[]).filter(function(p){return provKeys(p).indexOf(key)>-1;});
+      if(hit.length===1&&hit[0].d&&hit[0].d.indexOf(' ')>0)return hit[0].d;
+    }
+    return w;
+  }
+  function render(){
+    var name=CFG.name||displayFromWho();
+    var yr=CFG.year||'';
+    document.getElementById('heroYr').textContent=yr;
+    document.getElementById('eyebrow').textContent=(CFG.program||'UCSF Internal Medicine')+' · Intern year';
+    if(name){
+      document.getElementById('heroName').innerHTML=esc(name)+' <span class="yr">'+esc(yr)+'</span>';
+      var initials=name.trim().split(/\s+/).map(function(w){return w[0];}).join('').toUpperCase();
+      document.getElementById('nbrand').textContent=initials+' · Intern Year'+(yr?' ’'+yr.replace(/^20/,''):'');
+      document.title=name+' · Intern Year '+yr+' · '+(CFG.program||'UCSF IM');
+    }
+    if(!SCHED){
+      document.getElementById('setup').hidden=false;
+      document.getElementById('srcline').innerHTML='No schedule yet — set up the live QGenda sync below, import a .ics, or <a href="?demo">peek at the demo</a>.';
+      var rl=document.getElementById('readmeLink');
+      var repo=repoSlug();
+      rl.href=repo?'https://github.com/'+repo+'#readme':'#';
+      return;
+    }
+    var srcline={live:'Rendering <b>your live QGenda feed</b> — rotations, day-level shifts, vacations. Rosters come from the program-wide schedule snapshot (see fine print).',
+      import:'Rendering a <b>manually imported .ics snapshot</b>'+(localStorage.getItem('importedAt')?' from '+new Date(localStorage.getItem('importedAt')).toLocaleDateString():'')+'. Import again to refresh, or set up live sync (README).',
+      demo:'<b>Demo mode</b> — this is sample data (Max’s 2026–27 schedule) so you can see what your page will look like. <a href="'+location.pathname+'">Exit demo</a>.'}[SRC];
+    document.getElementById('srcline').innerHTML=srcline;
+
+    /* --- day maps --- */
+    var byDay={},rotDay={},days=[];
+    SCHED.events.forEach(function(e){(byDay[e.d]=byDay[e.d]||[]).push(e);});
+    days=Object.keys(byDay).sort();
+    days.forEach(function(d){
+      var l=byDay[d];for(var i=0;i<l.length;i++)if(l[i].r){rotDay[d]=l[i].t;break;}
+    });
+
+    /* --- blocks --- */
+    var blocks=[],curB=null;
+    days.forEach(function(d){
+      var t=rotDay[d];
+      if(!t){curB=null;return;}
+      if(curB&&curB.code===t&&dayDiff(D(curB.e),D(d))===1){curB.e=d;return;}
+      curB={code:t,s:d,e:d};blocks.push(curB);
+    });
+    blocks.forEach(function(b,i){b.i=i+1;b.days=dayDiff(D(b.s),D(b.e))+1;b.site=siteOf(b.code)||'';});
+
+    /* --- vacations --- */
+    var vacSet={};
+    SCHED.events.forEach(function(e){if(!e.r&&/^vac/i.test(e.t))vacSet[e.d]=1;});
+    var vacs=[],pv=null;
+    Object.keys(vacSet).sort().forEach(function(d){
+      if(pv&&dayDiff(D(pv.e),D(d))===1){pv.e=d;return;}
+      pv={s:d,e:d};vacs.push(pv);
+    });
+
+    /* --- hero facts --- */
+    var wd=['Sundays','Mondays','Tuesdays','Wednesdays','Thursdays','Fridays','Saturdays'];
+    var wc={};blocks.forEach(function(b){var w=D(b.s).getDay();wc[w]=(wc[w]||0)+1;});
+    var topw=Object.keys(wc).sort(function(a,b){return wc[b]-wc[a];})[0];
+    var facts=[];
+    if(blocks.length&&topw!==undefined)facts.push(['Block rhythm','Rotations mostly flip on <strong>'+wd[topw]+'</strong>; date ranges are exact from your feed.']);
+    if(vacs.length)facts.push(['Vacations',vacs.map(function(v){return fmtMD(D(v.s))+'–'+fmtMD(D(v.e));}).join(' · ')]);
+    facts.push(['Coverage',fmtMD(D(days[0]))+', '+D(days[0]).getFullYear()+' → '+fmtMD(D(days[days.length-1]))+', '+D(days[days.length-1]).getFullYear()+' · '+blocks.length+' blocks']);
+    if(COR)facts.push(['Co-resident data','Static program snapshot printed <strong>'+(COR.asOf?fmtMD(D(COR.asOf))+', '+D(COR.asOf).getFullYear():'7/8/2026')+'</strong> — see fine print.']);
+    var fEl=document.getElementById('facts');
+    fEl.innerHTML=facts.map(function(f){return '<div class="fact"><b>'+f[0]+'</b>'+f[1]+'</div>';}).join('');
+    fEl.hidden=false;
+
+    /* --- now / next --- */
+    var tod=iso(new Date());
+    function rotOf(k){return rotDay[k]||null;}
+    var curT=rotOf(tod);
+    if(curT){
+      var t0=D(tod),s0=t0,e0=t0;
+      while(rotOf(iso(shift(s0,-1)))===curT)s0=shift(s0,-1);
+      while(rotOf(iso(shift(e0,1)))===curT)e0=shift(e0,1);
+      var total=dayDiff(s0,e0)+1,dayN=dayDiff(s0,t0)+1;
+      document.getElementById('nowTitle').textContent=curT;
+      document.getElementById('nowMeta').textContent='Day '+dayN+' of '+total+' · through '+fmtMD(e0);
+      document.getElementById('nowDot').style.background=dotc(curT);
+      var nb=document.getElementById('nowBar');
+      nb.style.width=Math.max(3,Math.round(dayN/total*100))+'%';nb.style.background=dotc(curT);
+      var nD=shift(e0,1),nT=null,g=0;
+      while(g++<60&&!(nT=rotOf(iso(nD))))nD=shift(nD,1);
+      if(nT){var inD=dayDiff(t0,nD);
+        document.getElementById('nextTitle').textContent=nT;
+        document.getElementById('nextMeta').textContent='starts '+fmtMD(nD)+' · in '+inD+(inD===1?' day':' days');
+        document.getElementById('nextDot').style.background=dotc(nT);
+      }else{document.getElementById('nextTitle').textContent='—';}
+      document.getElementById('nowrow').hidden=false;
+    }
+
+    /* --- timeline: split blocks into two strips at boundary nearest midpoint --- */
+    if(blocks.length){
+      var totalDays=dayDiff(D(blocks[0].s),D(blocks[blocks.length-1].e))+1;
+      var best=0,bestDist=1e9,acc=0;
+      blocks.forEach(function(b,i){
+        acc=dayDiff(D(blocks[0].s),D(b.e))+1;
+        var dist=Math.abs(acc-totalDays/2);
+        if(i<blocks.length-1&&dist<bestDist){bestDist=dist;best=i;}
+      });
+      var rows=blocks.length>9?[blocks.slice(0,best+1),blocks.slice(best+1)]:[blocks];
+      var tlb='';
+      rows.forEach(function(row){
+        if(!row.length)return;
+        var rs=D(row[0].s),re=D(row[row.length-1].e),rdays=dayDiff(rs,re)+1;
+        tlb+='<p class="tcap">'+fmtMD(rs)+(rs.getFullYear()!==re.getFullYear()?', '+rs.getFullYear():'')+' – '+fmtMD(re)+', '+re.getFullYear()+' · blocks '+row[0].i+'–'+row[row.length-1].i+'</p>';
+        tlb+='<div class="strip" data-s="'+iso(rs)+'" data-e="'+iso(re)+'">';
+        var cursor=rs;
+        row.forEach(function(b){
+          var gap=dayDiff(cursor,D(b.s));
+          if(gap>0)tlb+='<span class="seg blank" style="width:'+(gap/rdays*100).toFixed(3)+'%" title="unscheduled"><span>—</span></span>';
+          tlb+='<a class="seg '+(b.site||'blank')+'" style="width:'+(b.days/rdays*100).toFixed(3)+'%" href="#b'+b.i+'" title="'+esc(b.code)+' · '+fmtRange(D(b.s),D(b.e))+'"><b>'+b.i+'</b><span>'+esc(b.code)+'</span></a>';
+          cursor=shift(D(b.e),1);
+        });
+        vacs.forEach(function(v){
+          var vs=D(v.s)<rs?rs:D(v.s),ve=D(v.e)>re?re:D(v.e);
+          if(vs>ve)return;
+          tlb+='<span class="vac" style="left:'+(dayDiff(rs,vs)/rdays*100).toFixed(3)+'%;width:'+((dayDiff(vs,ve)+1)/rdays*100).toFixed(3)+'%" title="Vacation '+fmtMD(D(v.s))+'–'+fmtMD(D(v.e))+'"></span>';
+        });
+        // today marker
+        var t=D(tod);
+        if(t>=rs&&t<=re)tlb+='<span class="youare" style="left:'+((dayDiff(rs,t)+0.5)/rdays*100).toFixed(2)+'%" title="Today"></span>';
+        tlb+='</div><div class="ticks">';
+        var mk=new Date(rs.getFullYear(),rs.getMonth()+1,1,12);
+        while(mk<=re){
+          tlb+='<span class="tick" style="left:'+(dayDiff(rs,mk)/rdays*100).toFixed(3)+'%">'+MOS[mk.getMonth()]+'</span>';
+          mk=new Date(mk.getFullYear(),mk.getMonth()+1,1,12);
+        }
+        tlb+='</div>';
+      });
+      document.getElementById('tlbody').innerHTML=tlb;
+      document.getElementById('tl').hidden=false;
+    }
+
+    /* --- index --- */
+    var idx='';
+    blocks.forEach(function(b){
+      idx+='<li><a href="#b'+b.i+'"><span class="no">'+String(b.i).padStart(2,'0')+'</span><span class="dot '+(b.site||'')+'"></span><span class="nm">'+esc(b.code)+'</span><span class="dt">'+fmtRange(D(b.s),D(b.e))+'</span><span class="du">'+durLabel(b.days)+'</span></a></li>';
+    });
+    var idxEl=document.getElementById('index');
+    idxEl.innerHTML=idx;idxEl.hidden=!blocks.length;
+
+    /* --- roster computation --- */
+    var mine=myKeys();
+    function isMe(p){var ks=provKeys(p);return ks.some(function(k){return mine.indexOf(k)>-1;});}
+    function rosterFor(b){
+      if(!COR)return null;
+      var s=D(b.s),e=D(b.e),before=[],withI=[],withR=[];
+      COR.providers.forEach(function(p){
+        if(isMe(p))return;
+        (p.r||[]).forEach(function(r){
+          if(r[0]!==b.code)return;
+          var rs=D(r[1]),re=D(r[2]);
+          if(re<s&&dayDiff(re,s)<=3&&p.role==='intern')before.push({p:p,e:re});
+          if(rs<=e&&re>=s){
+            var partial=rs>s||re<e;
+            var item={p:p,partial:partial,s:rs<s?s:rs,e:re>e?e:re};
+            (p.role==='intern'?withI:withR).push(item);
+          }
+        });
+      });
+      function ded(list,key){var seen={};return list.filter(function(x){var k=shortName(x.p)+'|'+(key?key(x):'');if(seen[k])return false;seen[k]=1;return true;});}
+      before=ded(before);withI=ded(withI,function(x){return iso(x.s);});withR=ded(withR,function(x){return iso(x.s);});
+      function bySN(a,b){return shortName(a.p)<shortName(b.p)?-1:1;}
+      before.sort(bySN);withI.sort(bySN);withR.sort(bySN);
+      return{before:before,withI:withI,withR:withR};
+    }
+    function chips(list){
+      return '<div class="chips">'+list.map(function(x){
+        var em=x.partial?'<em>'+fmtMDs(iso(x.s))+'–'+fmtMDs(iso(x.e))+'</em>':'';
+        return '<span class="chip">'+esc(shortName(x.p))+em+'</span>';
+      }).join('')+'</div>';
+    }
+
+    /* --- cards --- */
+    var ch='';
+    blocks.forEach(function(b){
+      var g=findGuide(b.code),sb=siteBasics(b.code);
+      var meta=(GUIDES.codes||{})[b.code]||{};
+      var sub=meta.sub||(g&&g.sub)||'';
+      var vpills='';
+      vacs.forEach(function(v){
+        if(D(v.s)<=D(b.e)&&D(v.e)>=D(b.s))vpills+='<span class="pill vacpill">Vacation '+fmtMD(D(v.s))+'–'+fmtMD(D(v.e))+'</span>';
+      });
+      var siteLbl={uc:'UC',sf:'ZSFG',va:'VA',clinic:'Clinic',nights:'Nights'}[b.site]||'';
+      ch+='<article class="card '+(b.site||'')+'" id="b'+b.i+'"><header>'
+        +'<div class="cno">'+String(b.i).padStart(2,'0')+'</div>'
+        +'<div class="ct"><h3>'+esc(b.code)+'</h3>'+(sub?'<p class="sub">'+esc(sub)+'</p>':'')+'</div>'
+        +'<div class="cd"><span class="dates">'+fmtRange(D(b.s),D(b.e))+'</span>'
+        +'<span class="pill">'+durLabel(b.days)+'</span>'+vpills
+        +(siteLbl?'<span class="pill site '+b.site+'">'+siteLbl+'</span>':'')+'</div></header>';
+      if(g||sb){
+        ch+='<details class="guide"><summary><span class="chev">▸</span>Rotation guide<span class="gsrc">'+esc((g&&g.src)||'site basics')+'</span></summary><div class="gbody">';
+        if(g)ch+=g.html;
+        if(sb)ch+='<h5>'+sb.key+' site basics</h5>'+sb.html;
+        ch+='</div></details>';
+      }
+      var ro=rosterFor(b);
+      if(ro){
+        ch+='<div class="roster">';
+        ch+='<section class="rg pre"><h4>Interns on before you <span>rotated off '+fmtMD(shift(D(b.s),-1))+'</span></h4>'
+          +(ro.before.length?chips(ro.before):'<p class="empty">— none found on this rotation code just before your start.</p>')+'</section>';
+        ch+='<section class="rg"><h4>Interns with you</h4>'
+          +(ro.withI.length?chips(ro.withI):'<p class="empty">— no other interns on this rotation code during your dates.</p>')+'</section>';
+        ch+='<section class="rg"><h4>Residents with you</h4>'
+          +(ro.withR.length?chips(ro.withR):'<p class="empty">— none on this rotation code (attending-supervised / intern-only, or covered under separate codes).</p>')+'</section>';
+        ch+='<p class="rcav">Rosters from the static program schedule printed '+(COR.asOf?fmtMDs(COR.asOf)+'/'+D(COR.asOf).getFullYear():'7/8/2026')+' — later swaps won’t show.</p>';
+        ch+='</div>';
+      }
+      ch+='</article>';
+    });
+    document.getElementById('cards').innerHTML=ch;
+    document.getElementById('blocks').hidden=!blocks.length;
+    document.getElementById('cavs').hidden=false;
+    document.getElementById('cavImport').hidden=SRC!=='import';
+    var ci=document.getElementById('clearImport');
+    if(ci)ci.addEventListener('click',function(e){e.preventDefault();localStorage.removeItem('importedSchedule');localStorage.removeItem('importedAt');location.reload();});
+    document.getElementById('foot').textContent=(COR?'Co-resident data: '+COR.source+' · ':'')+'Page generated in your browser from '+(SRC==='live'?'the live feed':SRC==='import'?'an imported .ics':'demo data')+'.';
+
+    /* --- past / current card styling --- */
+    var tD=D(tod);
+    blocks.forEach(function(b){
+      var card=document.getElementById('b'+b.i);
+      var lk=document.querySelector('.index a[href="#b'+b.i+'"]');
+      var cls=tD>D(b.e)?'past':(tD>=D(b.s)?'now':null);
+      if(cls){if(card)card.classList.add(cls);if(lk)lk.classList.add(cls);}
+    });
+
+    /* --- live grid --- */
+    renderLive(byDay,days,tod);
+
+    /* --- sync status --- */
+    var lv=document.getElementById('live');lv.hidden=false;
+    var lvsrc=document.getElementById('lvsrc'),upd=document.getElementById('lvupd'),sw=document.getElementById('lvsyncwrap');
+    if(SRC==='live'){
+      var repo=repoSlug();
+      if(repo){
+        var a=document.getElementById('lvsync');
+        a.href='https://github.com/'+repo+'/actions/workflows/qgenda-sync.yml';
+        a.addEventListener('click',function(e){e.stopPropagation();});
+        fetch('https://api.github.com/repos/'+repo+'/actions/workflows/qgenda-sync.yml/runs?status=success&per_page=1')
+          .then(function(r){return r.json();})
+          .then(function(j){
+            var run=j.workflow_runs&&j.workflow_runs[0];
+            if(!run){upd.textContent='sync status n/a';return;}
+            var m=Math.round((Date.now()-new Date(run.updated_at))/60000);
+            upd.textContent=m<1?'synced just now':'synced '+(m<60?m+'m':(m/60).toFixed(1).replace(/\.0$/,'')+'h')+' ago';
+            if(m>45)upd.classList.add('stale');
+          }).catch(function(){upd.textContent='sync status n/a';});
+      }else{upd.textContent='synced by GitHub Action';sw.hidden=true;}
+    }else{
+      lvsrc.textContent=SRC==='import'?'imported .ics':'demo data';
+      upd.textContent=SRC==='import'&&localStorage.getItem('importedAt')?('imported '+new Date(localStorage.getItem('importedAt')).toLocaleDateString()):'static';
+      sw.hidden=true;
+    }
+  }
+
+  function repoSlug(){
+    if(CFG.repo)return CFG.repo;
+    var h=location.hostname,seg=location.pathname.split('/').filter(Boolean);
+    if(/\.github\.io$/.test(h)&&seg.length)return h.split('.')[0]+'/'+seg[0];
+    return null;
+  }
+
+  /* ---------- live grid renderer ---------- */
+  function renderLive(byDay,days,tod){
+    var wrap=document.getElementById('lvwrap');
+    if(!days.length){wrap.innerHTML='<p class="lvmsg">The feed came back empty.</p>';return;}
+    function bar(t,s,e){var st=siteOf(t);return'<div class="lvbar '+(st&&st!=='off'?st:'other')+'" style="grid-column:'+(s+1)+' / '+(e+1)+'" title="'+esc(t)+'">'+esc(t)+'</div>';}
+    var names=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    var first=D(days[0]),last=D(days[days.length-1]);
+    first.setDate(first.getDate()-first.getDay());
+    var html='<div class="lvgrid"><div class="lvhead">';
+    for(var i=0;i<7;i++)html+='<span>'+names[i]+'</span>';
+    html+='</div>';
+    var d=new Date(first),wk=0,todayWk=-1,guard=0;
+    while(d<=last&&guard++<80){
+      var dns='',bars='',tasks='',runT=null,runS=0;
+      for(var c=0;c<7;c++){
+        var k=iso(d),evs=byDay[k]||[],isT=k===tod;
+        if(isT)todayWk=wk;
+        var wke=(c===0||c===6)?' c-wkend':'';
+        var lbl=(c===0||d.getDate()===1)?MOS[d.getMonth()]+' '+d.getDate():d.getDate();
+        dns+='<span class="lvdn'+wke+'" style="grid-column:'+(c+1)+'">'+(isT?'<span class="tdy">'+lbl+'</span>':lbl)+'</span>';
+        var rot=null;
+        evs.forEach(function(e){if(e.r&&!rot)rot=e.t;});
+        var chips='';
+        evs.forEach(function(e){
+          if(e.r)return;
+          if(/^(off|vacation)\b/i.test(e.t)){chips+='<span class="lvtask offd">'+esc(e.t.toUpperCase())+'</span>';return;}
+          var t=e.t;
+          if(rot){var w=t.split(' ');while(w.length>1&&rot.toUpperCase().indexOf(w[0].toUpperCase())>-1)w.shift();t=w.join(' ');}
+          var tm='',m=t.match(/\b\d{1,2}(?::\d{2})?[ap]m?\s*[-–]\s*\d{1,2}(?::\d{2})?[ap]m?\b/i);
+          if(m){tm=m[0].replace(/\s+/g,'');t=t.replace(m[0],'').replace(/\s{2,}/g,' ').trim();}
+          else if(e.s){tm=fmtT(e.s)+(e.e?'–'+fmtT(e.e):'');}
+          chips+='<span class="lvtask" title="'+esc(e.t)+'">'+(tm?'<em>'+tm+'</em>':'')+esc(t)+'</span>';
+        });
+        tasks+='<div class="lvtasks" style="grid-column:'+(c+1)+'">'+chips+'</div>';
+        if(rot!==runT){if(runT)bars+=bar(runT,runS,c);runT=rot;runS=c;}
+        d.setDate(d.getDate()+1);
+      }
+      if(runT)bars+=bar(runT,runS,7);
+      html+='<div class="lvweek" data-wk="'+wk+'">'+dns+bars+tasks+'</div>';
+      wk++;
+    }
+    html+='</div>';
+    wrap.innerHTML=html;
+    var cur=wrap.querySelector('[data-wk="'+todayWk+'"]');
+    var det=document.getElementById('live');
+    function jump(){if(cur)wrap.scrollTop=Math.max(0,cur.offsetTop-wrap.offsetTop-32);}
+    det.addEventListener('toggle',function(){if(det.open)jump();});
+    if(det.open)jump();
+  }
+})();
+</script>
+</body>
+</html>

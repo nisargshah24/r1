@@ -1,0 +1,35 @@
+name: Sync QGenda feed
+
+on:
+  schedule:
+    - cron: "23 14 * * *"   # once daily, ~7:23am Pacific
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: qgenda-sync
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch feed and convert to JSON
+        env:
+          ICS_URL: ${{ secrets.QGENDA_ICS_URL }}
+        run: python3 .github/scripts/ics_to_json.py
+
+      - name: Commit if changed
+        run: |
+          [ -f schedule-live.json ] || { echo "No feed data — set the QGENDA_ICS_URL repo secret to enable live sync."; exit 0; }
+          git config user.name "qgenda-sync[bot]"
+          git config user.email "actions@users.noreply.github.com"
+          git add schedule-live.json
+          git diff --cached --quiet && echo "no changes" || {
+            git commit -m "Update live schedule data"
+            git push
+          }
